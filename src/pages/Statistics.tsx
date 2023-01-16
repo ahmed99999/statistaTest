@@ -1,6 +1,7 @@
 import React from "react";
 import { useStatistics } from "../hooks/useStatistics";
 import Statistic from "../components/Statistic";
+import SearchbarInput from "../components/Searchbar";
 
 interface Props {}
 
@@ -27,12 +28,13 @@ const Statistics = (_: Props) => {
     return <div>Error Loading Statistics...</div>;
   }
 
-  if (!statistics) {
+  if (!statistics || !statistics.length) {
     return <div>There are no matching statistics for your search..</div>;
   }
 
   return (
-    <div className="font-bold">
+    <div className="">
+      <SearchbarInput />
       {statistics.map((statistic) => (
         <Statistic key={statistic.identifier} statistic={statistic} />
       ))}
