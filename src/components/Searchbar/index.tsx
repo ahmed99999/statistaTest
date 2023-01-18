@@ -2,7 +2,7 @@ import React, { ChangeEvent, useEffect, useState } from "react";
 import { useDebounce } from "../../hooks/useDebounce";
 
 interface Props {
-  onChange?: (searchInput?: string) => void;
+  onChange?: (searchValue: string) => void;
 }
 
 const SearchbarInput = ({ onChange = () => null }: Props) => {
