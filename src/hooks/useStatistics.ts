@@ -1,8 +1,12 @@
 import { useQuery } from "react-query";
 import { fetchStatistics } from "../services";
 
-const useStatistics = (onSuccess: () => void, onError: () => void) => {
-  return useQuery("statistics", fetchStatistics, {
+const useStatistics = (
+  searchValue: string = "",
+  onSuccess: () => void,
+  onError: () => void
+) => {
+  return useQuery("statistics", () => fetchStatistics(searchValue), {
     staleTime: 50000,
     onSuccess: onSuccess,
     onError: onError,
