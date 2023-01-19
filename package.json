@@ -52,5 +52,8 @@
   "devDependencies": {
     "tailwindcss": "^3.2.4",
     "ts-jest": "^29.0.5"
+  },
+  "react-dotenv": {
+    "whitelist": ["API_BASE_URL"]
   }
 }
