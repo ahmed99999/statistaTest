@@ -1,20 +1,20 @@
 import { useQuery } from "react-query";
-import { fetchStatistics } from "../services";
-import { selectStatistic } from "../selectors/selectStaistic";
+import { fetchStatistic } from "../services";
 
-interface Params {
-  onSuccess?: () => void;
-  onError?: () => void;
-  statisticId: number;
-}
-
-const useStatistic = ({ onSuccess, onError, statisticId }: Params) => {
-  return useQuery(["statistic ", statisticId], fetchStatistics, {
-    staleTime: 50000,
-    onSuccess: onSuccess,
-    onError: onError,
-    select: selectStatistic(statisticId),
-  });
+const useStatistic = (
+  statisticId: number,
+  onSuccess?: () => void,
+  onError?: () => void
+) => {
+  return useQuery(
+    ["statistic ", statisticId],
+    () => fetchStatistic(statisticId),
+    {
+      staleTime: 50000,
+      onSuccess: onSuccess,
+      onError: onError,
+    }
+  );
 };
 
 export { useStatistic };
