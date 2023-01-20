@@ -2,14 +2,6 @@ import React from "react";
 import { useStatistic } from "../hooks/useStatistic";
 import { useParams } from "react-router-dom";
 
-const onSuccess = () => {
-  console.log("fetching statistics");
-};
-
-const onError = () => {
-  console.log("encountering errors while fetching statistics");
-};
-
 const StatisticDetailPage = () => {
   let { statisticId = "" } = useParams();
 
@@ -17,7 +9,7 @@ const StatisticDetailPage = () => {
     isError,
     isLoading,
     data: statistic,
-  } = useStatistic(parseInt(statisticId), onSuccess, onError);
+  } = useStatistic(parseInt(statisticId));
 
   if (isLoading) {
     return <div>Loading Statistic...</div>;
