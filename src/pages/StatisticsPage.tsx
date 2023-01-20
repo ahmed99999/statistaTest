@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useStatistics } from "../hooks/useStatistics";
-import Statistic from "../components/Statistic";
 import SearchbarInput from "../components/Searchbar";
 import Favorites from "../features/Favorites";
 import { StatisticModel } from "../models";
 import { objectExistsInArray } from "../utils/object";
+import Statistics from "../components/Statistics";
 
 const onSuccess = () => {
   console.log("fetching statistics");
@@ -14,7 +14,7 @@ const onError = () => {
   console.log("encountering errors while fetching statistics");
 };
 
-const Statistics = () => {
+const StatisticsPage = () => {
   const [searchValue, setSearchValue] = useState<string>("");
   const [favouriteStatistics, setFavouriteStatistics] = useState<
     StatisticModel[]
@@ -48,31 +48,16 @@ const Statistics = () => {
     setFavouriteStatistics(() => resultFavourites);
   };
 
-  if (isLoading) {
-    return <div>Loading Statistics...</div>;
-  }
-
-  if (isError) {
-    return <div>Error Loading Statistics...</div>;
-  }
-
-  if (!statistics || !statistics.length) {
-    return <div>There are statistics</div>;
-  }
-
   return (
     <div className="flex flex-col">
       <SearchbarInput onChange={setSearchValue} />
       <div className="flex flex-row">
-        <div className="border-2 border-amber-700 w-9/12">
-          {statistics.map((statistic) => (
-            <Statistic
-              key={statistic.identifier}
-              statistic={statistic}
-              onAddToFavourites={onAddToFavourites}
-            />
-          ))}
-        </div>
+        <Statistics
+          statistics={statistics}
+          onAddToFavourites={onAddToFavourites}
+          isLoading={isLoading}
+          isError={isError}
+        />
 
         <Favorites
           items={favouriteStatistics}
@@ -83,4 +68,4 @@ const Statistics = () => {
   );
 };
 
-export default Statistics;
+export default StatisticsPage;

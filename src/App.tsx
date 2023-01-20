@@ -1,18 +1,21 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
-import Statistics from "./pages/Statistics";
-import Statistic from "./pages/StatisticDetail";
+import StatisticsPage from "./pages/StatisticsPage";
+import StatisticDetailPage from "./pages/StatisticDetailPage";
 
 function App() {
   return (
-      <div className="App">
-        <Routes>
-          <Route path="statistics" element={<Statistics />} />
-          <Route path="statistics/:statisticId" element={<Statistic />} />
-          <Route path="*" element={<Navigate to="/statistics" replace />} />
-        </Routes>
-      </div>
+    <div className="App">
+      <Routes>
+        <Route path="statistics" element={<StatisticsPage />} />
+        <Route
+          path="statistics/:statisticId"
+          element={<StatisticDetailPage />}
+        />
+        <Route path="*" element={<Navigate to="/statistics" replace />} />
+      </Routes>
+    </div>
   );
 }
 

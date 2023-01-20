@@ -10,7 +10,7 @@ const onError = () => {
   console.log("encountering errors while fetching statistics");
 };
 
-const StatisticDetail = () => {
+const StatisticDetailPage = () => {
   let { statisticId = "" } = useParams();
 
   const {
@@ -39,4 +39,4 @@ const StatisticDetail = () => {
   );
 };
 
-export default StatisticDetail;
+export default StatisticDetailPage;
