@@ -6,21 +6,13 @@ import { StatisticModel } from "../models";
 import { objectExistsInArray } from "../utils/object";
 import Statistics from "../components/Statistics";
 
-const onSuccess = () => {
-  console.log("fetching statistics");
-};
-
-const onError = () => {
-  console.log("encountering errors while fetching statistics");
-};
-
 const StatisticsPage = () => {
   const [searchValue, setSearchValue] = useState<string>("");
   const [favouriteStatistics, setFavouriteStatistics] = useState<
     StatisticModel[]
   >([]);
 
-  const statisticsResult = useStatistics(searchValue, onSuccess, onError);
+  const statisticsResult = useStatistics(searchValue);
   const { isError, isLoading, data: statistics } = statisticsResult;
 
   useEffect(() => {
