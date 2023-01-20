@@ -1,14 +1,18 @@
 import React from "react";
 import { StatisticModel } from "../../models";
 import Image from "../Image";
+import { Link } from "react-router-dom";
 
 interface Props {
   statistic: StatisticModel;
+  onAddToFavourites: (statistic: StatisticModel) => void;
 }
 
-const Statistic = ({ statistic }: Props) => {
+const Statistic = ({ statistic, onAddToFavourites = () => null }: Props) => {
+  const detailedStatisticUrl = `/statistics/${statistic.identifier}`;
+
   return (
-    <div className="border-2 border-indigo-500">
+    <div className="border-2 border-indigo-500 w-48">
       <h3>{statistic.title}</h3>
       <Image
         loading="lazy"
@@ -18,7 +22,12 @@ const Statistic = ({ statistic }: Props) => {
         height={600}
       />
       <p className="w-96">{statistic.description}</p>
-      <button>Read More</button>
+      <Link to={detailedStatisticUrl}>Read More</Link>
+      <div>
+        <button onClick={() => onAddToFavourites(statistic)}>
+          Add To Favourites
+        </button>
+      </div>
     </div>
   );
 };

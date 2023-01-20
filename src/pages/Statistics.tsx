@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useStatistics } from "../hooks/useStatistics";
 import Statistic from "../components/Statistic";
 import SearchbarInput from "../components/Searchbar";
+import Favorites from "../Features/Favorites";
+import { StatisticModel } from "../models";
+import { objectExistsInArray } from "../utils/object";
 
 const onSuccess = () => {
   console.log("fetching statistics");
@@ -13,6 +16,9 @@ const onError = () => {
 
 const Statistics = () => {
   const [searchValue, setSearchValue] = useState<string>("");
+  const [favouriteStatistics, setFavouriteStatistics] = useState<
+    StatisticModel[]
+  >([]);
 
   const statisticsResult = useStatistics(searchValue, onSuccess, onError);
   const { isError, isLoading, data: statistics } = statisticsResult;
@@ -24,6 +30,21 @@ const Statistics = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchValue]);
+
+  const onAddToFavourites = (statistic: StatisticModel) => {
+    if (objectExistsInArray(favouriteStatistics, statistic, "identifier")) {
+      return;
+    }
+    const resultFavourites = [...favouriteStatistics, statistic];
+    setFavouriteStatistics(() => resultFavourites);
+  };
+
+  const onDeleteFromFavourites = (statisticId: number) => {
+    const resultFavourites = favouriteStatistics.filter(
+      (favouriteStatistic) => favouriteStatistic.identifier !== statisticId
+    );
+    setFavouriteStatistics(() => resultFavourites);
+  };
 
   if (isLoading) {
     return <div>Loading Statistics...</div>;
@@ -38,11 +59,24 @@ const Statistics = () => {
   }
 
   return (
-    <div className="">
+    <div className="flex flex-col">
       <SearchbarInput onChange={setSearchValue} />
-      {statistics.map((statistic) => (
-        <Statistic key={statistic.identifier} statistic={statistic} />
-      ))}
+      <div className="flex flex-row justify-between">
+        <div>
+          {statistics.map((statistic) => (
+            <Statistic
+              key={statistic.identifier}
+              statistic={statistic}
+              onAddToFavourites={onAddToFavourites}
+            />
+          ))}
+        </div>
+
+        <Favorites
+          items={favouriteStatistics}
+          onDeleteFromFavourites={onDeleteFromFavourites}
+        />
+      </div>
     </div>
   );
 };
