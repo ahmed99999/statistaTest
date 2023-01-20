@@ -32,6 +32,7 @@ const Statistics = () => {
   }, [searchValue]);
 
   const onAddToFavourites = (statistic: StatisticModel) => {
+    // here would be the post request to with just statisticId to add to favourites
     if (objectExistsInArray(favouriteStatistics, statistic, "identifier")) {
       return;
     }
@@ -40,6 +41,7 @@ const Statistics = () => {
   };
 
   const onDeleteFromFavourites = (statisticId: number) => {
+    // here would be the delete request to with just statisticId to delete from favourites
     const resultFavourites = favouriteStatistics.filter(
       (favouriteStatistic) => favouriteStatistic.identifier !== statisticId
     );
@@ -61,8 +63,8 @@ const Statistics = () => {
   return (
     <div className="flex flex-col">
       <SearchbarInput onChange={setSearchValue} />
-      <div className="flex flex-row justify-between">
-        <div>
+      <div className="flex flex-row">
+        <div className="border-2 border-amber-700 w-9/12">
           {statistics.map((statistic) => (
             <Statistic
               key={statistic.identifier}
