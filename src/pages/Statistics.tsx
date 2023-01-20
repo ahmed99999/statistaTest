@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useStatistics } from "../hooks/useStatistics";
 import Statistic from "../components/Statistic";
 import SearchbarInput from "../components/Searchbar";
-import Favorites from "../Features/Favorites";
+import Favorites from "../features/Favorites";
 import { StatisticModel } from "../models";
 import { objectExistsInArray } from "../utils/object";
 
