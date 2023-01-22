@@ -7,6 +7,7 @@ interface Props {
   onAddToFavourites: (statistic: StatisticModel) => void;
   isLoading: boolean;
   isError: boolean;
+  className?: string;
 }
 
 const Statistics = ({
@@ -14,6 +15,7 @@ const Statistics = ({
   onAddToFavourites,
   isLoading,
   isError,
+  className = "",
 }: Props) => {
   if (isLoading) {
     return <div>Loading Statistics...</div>;
@@ -28,7 +30,7 @@ const Statistics = ({
   }
 
   return (
-    <div className="border-2 border-amber-700 w-9/12">
+    <div className={`${className} statisticList`}>
       {statistics.map((statistic) => (
         <Statistic
           key={statistic.identifier}

@@ -1,3 +1,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components {
+    .statisticList {
+        @apply
+        bg-gray-100 p-5 flex flex-wrap gap-2 overflow-y-auto
+    }
+
+    .statistic {
+       @apply
+        bg-white text-gray-700 w-72 min-h-[4rem] shadow-lg overflow-hidden rounded-md p-2
+        flex flex-col justify-center items-center grow
+    }
+
+    .button {
+        @apply
+        px-3 py-1 rounded-full text-xs bg-gray-100
+    }
+
+    .searchBar {
+        @apply
+        w-[800] h-24 flex justify-center items-center bg-white sticky top-0 z-10 border-2 border-b-gray-100
+    }
+
+    .searchBarInput {
+        @apply
+        w-96 h-12 p-2 border-2 border-gray-200 rounded-2xl
+    }
+
+    .favorites {
+        @apply
+        flex flex-col mt-5 bg-white top-28 rounded sticky h-[calc(100vh-8rem)] z-10 mr-3 overflow-hidden shadow-lg mb-3
+    }
+}

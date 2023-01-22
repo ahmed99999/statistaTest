@@ -12,19 +12,22 @@ const Statistic = ({ statistic, onAddToFavourites = () => null }: Props) => {
   const detailedStatisticUrl = `/statistics/${statistic.identifier}`;
 
   return (
-    <div className="border-2 border-indigo-500">
-      <h3>{statistic.title}</h3>
+    <div className="statistic">
+      <h3 className="h-2/5 mb-1 overflow-hidden">{statistic.title}</h3>
       <Image
         loading="lazy"
         src={statistic.image_url}
         alt="..."
-        width={500}
-        height={400}
+        width="w-2/4"
+        height="h-2/5"
+        className="mx-auto"
       />
-      <p>{statistic.description}</p>
-      <Link to={detailedStatisticUrl}>Read More</Link>
-      <div>
-        <button onClick={() => onAddToFavourites(statistic)}>
+
+      <div className="h-1/5 p-5 flex gap-3 mt-auto">
+        <Link className="button" to={detailedStatisticUrl}>
+          Read More
+        </Link>
+        <button className="button" onClick={() => onAddToFavourites(statistic)}>
           Add To Favourites
         </button>
       </div>

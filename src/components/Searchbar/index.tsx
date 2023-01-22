@@ -20,11 +20,12 @@ const SearchbarInput = ({ onChange = () => null }: Props) => {
   }, [debouncedSearchInput]);
 
   return (
-    <div className="w-[800] h-24 flex justify-center items-center">
+    <div className="searchBar">
       <input
         type="text"
-        className="w-96 h-12 p-2 border-2 border-blue-600 rounded-2xl"
+        className="searchBarInput"
         onChange={handleChangeSearchInput}
+        placeholder="Search for statistics..."
       />
     </div>
   );
