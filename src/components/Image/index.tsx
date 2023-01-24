@@ -17,6 +17,7 @@ const Image = (props: Props) => {
   return (
     <LazyLoadImage
       {...props}
+      effect={"opacity"}
       src={imageSrc}
       placeholderSrc={placeHolderImage}
       onError={handleError}

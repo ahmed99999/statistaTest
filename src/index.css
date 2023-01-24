@@ -6,13 +6,58 @@
 @layer components {
     .statisticList {
         @apply
-        bg-gray-100 p-5 flex flex-wrap gap-2 overflow-y-auto
+        bg-gray-100 p-5 flex flex-wrap gap-2 overflow-y-hidden
     }
 
     .statistic {
        @apply
-        bg-white text-gray-700 w-72 min-h-[4rem] shadow-lg overflow-hidden rounded-md p-2
+        bg-white text-gray-700 w-72 min-h-[2rem] shadow-lg overflow-hidden rounded-md p-2
         flex flex-col justify-center items-center grow
+    }
+
+    .statisticTitle {
+        @apply
+        h-2/5 mb-1 overflow-hidden
+    }
+
+    .statisticFooter {
+        @apply
+        h-1/5 py-5 flex justify-between mt-auto w-full
+    }
+
+    .statisticDetail {
+        @apply
+        flex flex-col bg-gray-100 min-h-screen px-[6.25rem] py-10
+    }
+
+    .statisticDetailImage {
+        @apply
+        shadow-lg border-2 border-gray-200 overflow-hidden rounded-md w-full h-[550px]
+    }
+
+    .statisticDetailInfo {
+        @apply
+        flex flex-col gap-3 bg-white shadow-lg overflow-hidden rounded-md flex-grow p-5
+    }
+
+    .statisticDetailInfoItem {
+        @apply
+        font-bold text-lg text-zinc-500
+    }
+
+    .statisticDetailAdditionalInfo {
+        @apply
+        flex flex-col gap-2 bg-white shadow-lg overflow-hidden rounded-md mt-5 flex-grow p-5 text-zinc-500
+    }
+
+    .statisticDetailDescription {
+        @apply
+        font-bold text-lg text-zinc-500
+    }
+
+    .teaserImage {
+        @apply
+        max-w-[400px] max-h-[400px] mt-2 rounded
     }
 
     .button {
@@ -32,6 +77,42 @@
 
     .favorites {
         @apply
-        flex flex-col mt-5 bg-white top-28 rounded sticky h-[calc(100vh-8rem)] z-10 mr-3 overflow-hidden shadow-lg mb-3
+        flex flex-col mt-5 bg-white top-28 rounded sticky h-[calc(100vh-8rem)] z-10 mr-3 overflow-hidden
+        shadow-lg mb-3 p-3
+    }
+
+    .favoritesList {
+        @apply
+        flex flex-row gap-1 items-center bg-gray-100 rounded
+    }
+
+    .favoritesHeader {
+        @apply
+        flex justify-center text-xl mb-4
+    }
+
+    .favoritesImage {
+        @apply
+        w-16 h-14 m-1 rounded border border-gray-300
+    }
+
+    .favoritesTitle {
+        @apply
+        w-3/5 whitespace-nowrap overflow-hidden text-ellipsis
+    }
+
+    .pagination {
+        @apply
+        flex h-8 w-full bg-gray-100 px-5 top-24 justify-between sticky z-10 mb-2 py-6
+    }
+
+    .paginationButton {
+        @apply
+        flex items-center gap-1 text-blue-500
+    }
+
+    .link {
+        @apply
+        flex items-center text-blue-600 gap-1 text-sm  hover:underline
     }
 }

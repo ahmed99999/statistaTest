@@ -2,6 +2,7 @@ import React from "react";
 import { StatisticModel } from "../../models";
 import Image from "../Image";
 import { Link } from "react-router-dom";
+import { BsArrowRight } from "react-icons/bs";
 
 interface Props {
   statistic: StatisticModel;
@@ -13,19 +14,19 @@ const Statistic = ({ statistic, onAddToFavourites = () => null }: Props) => {
 
   return (
     <div className="statistic">
-      <h3 className="h-2/5 mb-1 overflow-hidden">{statistic.title}</h3>
+      <h3 className="statisticTitle">{statistic.title}</h3>
       <Image
         loading="lazy"
         src={statistic.image_url}
         alt="..."
-        width="w-2/4"
-        height="h-2/5"
+        width="w-24"
+        height="h-24"
         className="mx-auto"
       />
 
-      <div className="h-1/5 p-5 flex gap-3 mt-auto">
-        <Link className="button" to={detailedStatisticUrl}>
-          Read More
+      <div className="statisticFooter">
+        <Link className="link" to={detailedStatisticUrl}>
+          <BsArrowRight /> Read More
         </Link>
         <button className="button" onClick={() => onAddToFavourites(statistic)}>
           Add To Favourites

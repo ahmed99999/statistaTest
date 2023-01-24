@@ -43,7 +43,7 @@ const StatisticsPage = () => {
   return (
     <div className="flex flex-col">
       <SearchbarInput onChange={setSearchValue} />
-      <div className="flex bg-gray-100">
+      <div className="flex bg-gray-100 mt-0">
         <Statistics
           statistics={statistics}
           onAddToFavourites={onAddToFavourites}
