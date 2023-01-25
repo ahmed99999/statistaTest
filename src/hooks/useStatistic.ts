@@ -2,11 +2,11 @@ import { useQuery } from "react-query";
 import { fetchStatistic } from "../services";
 
 const onSuccess = () => {
-  console.log("fetching statistics");
+  console.log("fetching statistic");
 };
 
 const onError = () => {
-  console.log("encountering errors while fetching statistics");
+  console.log("encountering errors while fetching statistic");
 };
 
 const useStatistic = (statisticId: number) => {
